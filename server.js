@@ -1,0 +1,17 @@
+var firebase = require("firebase");
+firebase.initializeApp({
+  serviceAccount: "SwiftTransportApp-8734f7cd54a3.json",
+  databaseURL: "https://swifttransportapp.firebaseio.com"
+});
+
+var auth = firebase.auth();
+var idToken ="eyJhbGciOiJSUzI1NiIsImtpZCI6ImU0MTMzODZkODljOWMxZWZjNTQwZTc4YzZkMzlkMTRiYWY0MjFjZjMifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vc3dpZnR0cmFuc3BvcnRhcHAiLCJhdWQiOiJzd2lmdHRyYW5zcG9ydGFwcCIsImF1dGhfdGltZSI6MTQ2Mzk4NzY3MiwidXNlcl9pZCI6InI3NG43ZjR3UWZYS3dpdFVkQkpsa0drb3lDczEiLCJzdWIiOiJyNzRuN2Y0d1FmWEt3aXRVZEJKbGtHa295Q3MxIiwiaWF0IjoxNDYzOTk1MDUzLCJleHAiOjE0NjM5OTg2NTMsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJhYmNAZ21haWwuY29tIl19fX0.kQEQu-m36MwWzo0bu9-NKTqxcdce2idVjZgkrPdz0w8LIQhfJabqIxMynJ63ktYO4fuL_VixxEMXwSSEWW1MULLjzhcSuiRaTlcv_TuBCo1vt-gQt7lKpp8Ti1cmOkqB-fcG9iNR4MiNuLrtmVXdgWcpzPpZzn3nA5OIi5c0A_fiM2p6pAAcZ2g08FdPSet_5dDTJHZ7nVh7v1DCX-VWIJGBTa88YJCE5v1b6reu8wzA3N8SNXFuZElK6V5qjNcr-1FPeER5xEP3BgGI9Ktj27iO4nUpISbzURs3Qayt4AtHDhpJelIRFdyHLwrpgQ2KdDgdTwfTsva-4X7vWGEYAA"  // Get the user's ID token from the client app
+
+auth.verifyIdToken(idToken).then(function(decodedToken) {
+  var uid = decodedToken.sub;
+  console.log(uid);
+},function(err){
+    console.log(err);
+});
+
+
